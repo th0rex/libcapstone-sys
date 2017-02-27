@@ -1,0 +1,12 @@
+[package]
+name = "libcapstone-sys"
+version = "0.1.0"
+authors = ["th0rex"]
+build = "build.rs"
+
+[dependencies]
+
+[build-dependencies]
+# Update as soon as a new version is released.
+# We need the no-prepend-enum-name feature.
+bindgen = { git = "https://github.com/servo/rust-bindgen", rev = "4e4f092d603828647bae12754a57c59efdfee005"}
