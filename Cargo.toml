@@ -5,6 +5,7 @@ authors = ["th0rex"]
 build = "build.rs"
 description = "Raw bindings to the capstone disassembler engine"
 license = "MIT"
+repository = "https://github.com/th0rex/libcapstone-sys"
 
 [dependencies]
 
