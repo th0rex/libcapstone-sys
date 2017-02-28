@@ -60,6 +60,11 @@ fn main() {
 
     bindings.write_to_file(out_path.join("bindings.rs"))
         .expect("Couldn't write bindings!");
+
+    // TODO: For some reason .link("capstone") won't work.
+    // Remove this once it does again.
+    // TODO: Add support for library search paths.
+    println!("cargo:rustc-link-lib=dylib=capstone");
 }
 
 const DEBUG_IMPL: &'static str =
