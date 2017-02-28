@@ -3,6 +3,8 @@ name = "libcapstone-sys"
 version = "0.1.0"
 authors = ["th0rex"]
 build = "build.rs"
+description = "Raw bindings to the capstone disassembler engine"
+license-file = "LICENSE"
 
 [dependencies]
 
