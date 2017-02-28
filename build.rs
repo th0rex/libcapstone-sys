@@ -52,6 +52,7 @@ fn main() {
         .whitelisted_type("cs_.*")
         .whitelisted_function("cs_.*")
         .prepend_enum_name(false)
+        .raw_line(DEBUG_IMPL)
         // Finish the builder and generate the bindings.
         .generate()
         // Unwrap the Result and panic on failure.
@@ -60,3 +61,24 @@ fn main() {
     bindings.write_to_file(out_path.join("bindings.rs"))
         .expect("Couldn't write bindings!");
 }
+
+const DEBUG_IMPL: &'static str =
+    "
+use std::fmt;
+impl fmt::Debug for cs_insn {
+    fn fmt(&self, f: &mut fmt::Formatter) -> \
+     fmt::Result {
+        f.debug_struct(\"cs_insn\")
+            .field(\"id\", &self.id)
+            \
+     .field(\"address\", &self.address)
+            .field(\"size\", &self.size)
+            \
+     .field(\"bytes\", &self.bytes)
+            .field(\"mnemonic\", &self.mnemonic)
+            \
+     .field(\"detail\", &self.detail)
+            .finish()
+    }
+}
+";
