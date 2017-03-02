@@ -6,6 +6,7 @@
 
 include!(concat!(env!("OUT_DIR"), "/bindings.rs"));
 
+use std::ffi::CStr;
 use std::marker::PhantomData;
 
 /// `PointerIter` iterates over an array of things that are
@@ -101,6 +102,16 @@ impl cs_detail {
 
     pub fn groups_iter(&self) -> PointerIter<u8> {
         PointerIter::new(self.groups.as_ptr(), self.groups_count as _)
+    }
+}
+
+impl cs_insn {
+    pub fn get_mnemonic(&self) -> String {
+        unsafe { CStr::from_ptr(self.mnemonic.as_ptr()) }.to_string_lossy().into_owned()
+    }
+
+    pub fn get_op_str(&self) -> String {
+        unsafe { CStr::from_ptr(self.op_str.as_ptr()) }.to_string_lossy().into_owned()
     }
 }
 
