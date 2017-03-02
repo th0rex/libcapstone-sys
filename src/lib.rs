@@ -6,12 +6,26 @@
 
 include!(concat!(env!("OUT_DIR"), "/bindings.rs"));
 
+use std::marker::PhantomData;
+
 /// `PointerIter` iterates over an array of things that are
 /// pointed to by an pointer.
 pub struct PointerIter<'a, T: 'a> {
-    ptr: &'a *const T,
+    ptr: *const T,
     count: usize,
     current: usize,
+    lifetime: PhantomData<&'a T>,
+}
+
+impl<'a, T: 'a> PointerIter<'a, T> {
+    pub fn new(ptr: *const T, count: usize) -> Self {
+        PointerIter {
+            ptr: ptr,
+            count: count,
+            current: 0,
+            lifetime: PhantomData,
+        }
+    }
 }
 
 impl<'a, T: 'a> Iterator for PointerIter<'a, T> {
@@ -25,6 +39,12 @@ impl<'a, T: 'a> Iterator for PointerIter<'a, T> {
             self.current += 1;
             Some(object)
         }
+    }
+}
+
+impl cs_arm {
+    pub fn operand_iter(&self) -> PointerIter<cs_arm_op> {
+        PointerIter::new(self.operands.as_ptr(), self.op_count as _)
     }
 }
 
