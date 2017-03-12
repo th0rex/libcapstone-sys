@@ -32,6 +32,14 @@ Simply execute `cargo test`.
 
 * [rust-bindgen](https://github.com/servo/rust-bindgen) - Generate Rust FFI bindings to C and C++ libraries.
 
+## Difference between this and [capstone-rs](https://github.com/richo/capstone-rs)
+`capstone-rs` does not have complete bindings to the capstone engine. For example, `cs_detail` is completly missing and also many constants
+are missing.
+
+libcapstone-sys generates bindings directly from the capstone headers, so nothing is missing!
+
+However that results in an not rust like API, for which [libcapstone](https://github.com/th0rex/libcapstone) exists.
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
