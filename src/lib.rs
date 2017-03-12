@@ -140,14 +140,17 @@ impl cs_detail {
         unsafe { &self.__bindgen_anon_1.xcore }
     }
 
+    /// Returns an iterator over the registers read by this instruction.
     pub fn regs_read_iter(&self) -> PointerIter<u8> {
         PointerIter::new(self.regs_read.as_ptr(), self.regs_read_count as _)
     }
 
+    /// Returns an iterator over the registers written to by this instruction.
     pub fn regs_write_iter(&self) -> PointerIter<u8> {
         PointerIter::new(self.regs_write.as_ptr(), self.regs_write_count as _)
     }
 
+    /// Returns an iterator over the groups this instruction belongs to.
     pub fn groups_iter(&self) -> PointerIter<u8> {
         PointerIter::new(self.groups.as_ptr(), self.groups_count as _)
     }
