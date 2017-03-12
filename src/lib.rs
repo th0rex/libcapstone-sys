@@ -92,6 +92,54 @@ impl cs_xcore {
 }
 
 impl cs_detail {
+    /// Returns a reference to the `x86` field of the union.
+    /// It is the responsibility of the caller to ensure that the field may be used.
+    pub fn get_x86(&self) -> &cs_x86 {
+        unsafe { &self.__bindgen_anon_1.x86 }
+    }
+
+    /// Returns a reference to the `arm64` field of the union.
+    /// It is the responsibility of the caller to ensure that the field may be used.
+    pub fn get_arm64(&self) -> &cs_arm64 {
+        unsafe { &self.__bindgen_anon_1.arm64 }
+    }
+
+    /// Returns a reference to the `arm` field of the union.
+    /// It is the responsibility of the caller to ensure that the field may be used.
+    pub fn get_arm(&self) -> &cs_arm {
+        unsafe { &self.__bindgen_anon_1.arm }
+    }
+
+    /// Returns a reference to the `mips` field of the union.
+    /// It is the responsibility of the caller to ensure that the field may be used.
+    pub fn get_mips(&self) -> &cs_mips {
+        unsafe { &self.__bindgen_anon_1.mips }
+    }
+
+    /// Returns a reference to the `ppc` field of the union.
+    /// It is the responsibility of the caller to ensure that the field may be used.
+    pub fn get_ppc(&self) -> &cs_ppc {
+        unsafe { &self.__bindgen_anon_1.ppc }
+    }
+
+    /// Returns a reference to the `sparc` field of the union.
+    /// It is the responsibility of the caller to ensure that the field may be used.
+    pub fn get_sparc(&self) -> &cs_sparc {
+        unsafe { &self.__bindgen_anon_1.sparc }
+    }
+
+    /// Returns a reference to the `sysz` field of the union.
+    /// It is the responsibility of the caller to ensure that the field may be used.
+    pub fn get_sysz(&self) -> &cs_sysz {
+        unsafe { &self.__bindgen_anon_1.sysz }
+    }
+
+    /// Returns a reference to the `xcore` field of the union.
+    /// It is the responsibility of the caller to ensure that the field may be used.
+    pub fn get_xcore(&self) -> &cs_xcore {
+        unsafe { &self.__bindgen_anon_1.xcore }
+    }
+
     pub fn regs_read_iter(&self) -> PointerIter<u8> {
         PointerIter::new(self.regs_read.as_ptr(), self.regs_read_count as _)
     }
