@@ -1,7 +1,8 @@
 # libcapstone-sys
 
-Complete rust bindings to the [capstone engine](https://github.com/aquynh/capstone). Currently only Linux is supported.
-It also currently requires a nightly version of Rust.
+Complete rust bindings to the [capstone engine](https://github.com/aquynh/capstone). Currently only Linux and OS X is supported.
+Building on windows should work, but I currently can't test that.
+A nightly version of Rust is also required.
 
 ## Getting Started
 
@@ -9,9 +10,13 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-You'll need to have installed the capstone engine. The library should be in one of the default library directories when using Linux/OS X.
+You'll need to have installed the capstone engine.
 
 You can set the environment variable `CAPSTONE_INCLUDE_DIR` to the directory where the header files for the capstone engine are.
+The environment variable `CAPSTONE_LIBRARY_DIR` specifies the library directory where capstone is installed.
+These default to `/usr/include` and `/usr/lib` on Linux and OS X. 
+
+On windows there are no default library and include directories so you *must* specify these environment variables.
 
 Then you can simply `git clone` this repository and `cd` into it.
 
