@@ -1,7 +1,7 @@
 # libcapstone-sys
 
 Complete rust bindings to the [capstone engine](https://github.com/aquynh/capstone). Currently only Linux is supported.
-We also currently require a nightly version of Rust.
+It also currently requires a nightly version of Rust.
 
 ## Getting Started
 
