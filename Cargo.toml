@@ -3,7 +3,7 @@ name = "libcapstone-sys"
 version = "0.3.2"
 authors = ["th0rex"]
 build = "build.rs"
-description = "Raw bindings to the capstone disassembler engine"
+description = "Rust bindings to the capstone engine"
 license = "MIT"
 repository = "https://github.com/th0rex/libcapstone-sys"
 
