@@ -24,6 +24,9 @@ Then you can simply `git clone` this repository and `cd` into it.
 
 To build this project simply execute `cargo build`.
 
+## Examples
+Examples can be found in the [examples](https://github.com/th0rex/libcapstone-sys/examples) directory.
+
 ## Running the tests
 
 Simply execute `cargo test`.
