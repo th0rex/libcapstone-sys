@@ -120,7 +120,7 @@ impl Capstone {
     /// `disasm` disassembles the given `code` at the given `address`.
     /// It disassembles `count` instructions. If `count` is 0, then as many
     /// instructions as possible are disassembled.
-    pub fn disasm(&self, code: &[u8], address: u64, count: usize) -> CsResult<Instructions> {
+    pub fn disasm(&self, code: &[u8], address: u64, count: usize) -> Instructions {
         let mut instructions: *mut cs_insn = ptr::null_mut();
         let count = unsafe {
             cs_disasm(self.handle,
@@ -131,18 +131,12 @@ impl Capstone {
                       &mut instructions)
         };
 
-        if count == 0 {
-            let err = unsafe { cs_errno(self.handle) };
-            debug_assert_ne!(err, CS_ERR_OK);
-            Err(err)
-        } else {
-            Ok(Instructions::from_raw(instructions, count))
-        }
+        Instructions::from_raw(instructions, count)
     }
 
     /// `disasm_all` disassembles as many instructions as possible in the given `code`
     /// at the given `address`.
-    pub fn disasm_all(&self, code: &[u8], address: u64) -> CsResult<Instructions> {
+    pub fn disasm_all(&self, code: &[u8], address: u64) -> Instructions {
         self.disasm(code, address, 0)
     }
 
