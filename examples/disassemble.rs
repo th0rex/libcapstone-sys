@@ -11,8 +11,7 @@ fn main() {
         .build()
         .expect("Could not create capstone engine");
 
-    let instructions = engine.disasm_all(&[0x31, 0xed, 0x49, 0x89, 0xd1], 0x4a7aa0)
-        .expect("Could not disassemble instructions");
+    let instructions = engine.disasm_all(&[0x31, 0xed, 0x49, 0x89, 0xd1], 0x4a7aa0);
 
     for instruction in instructions.iter() {
         println!("Instruction: id={}, address={}, size={}, bytes={:?}, mnemonic={}, op_str={}, \
